@@ -1,15 +1,14 @@
 <template>
   <div id="app">
     <h1>Calculadora</h1>
-    <p>Em resumo, o App.vue é um componente fundamental em projetos Vue.js criados com o Vue CLI, 
-      pois ele é o componente principal da sua aplicação e é responsável por definir a estrutura HTML, 
-      a lógica JavaScript e o estilo CSS do seu aplicativo.</p>
+    <Calculator/>
   </div>
 </template>
 
 <script>
+import Calculator from "./main/Calculator.vue"
 export default {
-
+  components: { Calculator }
 }
 </script>
 

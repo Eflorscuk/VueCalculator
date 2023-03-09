@@ -1,5 +1,5 @@
 <template>
-  <div class="calculator">
+    <div class="calculator">
         <Display :value="displayValue" />
         <Button label="AC" triple @onClick="clearMemory" />
         <Button label="/" operation @onClick="setOperation" />
@@ -22,12 +22,13 @@
 </template>
 
 <script>
-import Button from "../components/Button.vue"
-import Display from "../components/Display.vue"
+import Button from "../components/Button"
+import Display from "../components/Display"
+
 export default {
     data: function() {
         return {
-            displayValue: 0,
+            displayValue: "0",
             clearDisplay: false,
             operation: null,
             values: [0, 0],
@@ -39,7 +40,7 @@ export default {
         clearMemory() {
             Object.assign(this.$data, this.$options.data())
         },
-        setOperation(operation){
+        setOperation(operation) {
             if (this.current === 0) {
                 this.operation = operation
                 this.current = 1
@@ -52,33 +53,33 @@ export default {
                     this.values[0] = eval(
                         `${this.values[0]} ${currentOperation} ${this.values[1]}`
                     )
-                } catch(e){
+                } catch (e) {
                     this.$emit('onError', e)
                 }
+
+                this.values[1] = 0
+
+                this.displayValue = this.values[0]
+                this.operation = equals ? null : operation
+                this.current = equals ? 0 : 1
+                this.clearDisplay = !equals
             }
-
-            this.values[1] = 0
-
-            this.displayValue = this.values[0]
-            this.operation = equals ? null : operation
-            this.current = equals ? 0 : 1
-            this.clearDisplay = !equals
         },
-        addDigit(n){
+        addDigit(n) {
             if (n === "." && this.displayValue.includes(".")) {
                 return
             }
-            const clearDisplay = this.displayValue === "0" || this.clearDisplay
+
+            const clearDisplay = this.displayValue === "0"
+                || this.clearDisplay
             const currentValue = clearDisplay ? "" : this.displayValue
             const displayValue = currentValue + n
-            
+
             this.displayValue = displayValue
             this.clearDisplay = false
-
+            
             this.values[this.current] = displayValue
-        },
-
-
+        }
     }
 }
 </script>
@@ -89,6 +90,7 @@ export default {
     width: 235px;
     border-radius: 5px;
     overflow: hidden;
+
     display: grid;
     grid-template-columns: repeat(4, 25%);
     grid-template-rows: 1fr 48px 48px 48px 48px 48px;
