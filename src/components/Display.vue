@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'DisplayApp',
   props: ['value']
 }
 </script>

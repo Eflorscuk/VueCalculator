@@ -1,31 +1,32 @@
 <template>
     <div class="calculator">
-        <Display :value="displayValue" />
-        <Button label="AC" triple @onClick="clearMemory" />
-        <Button label="/" operation @onClick="setOperation" />
-        <Button label="7" @onClick="addDigit" />
-        <Button label="8" @onClick="addDigit" />
-        <Button label="9" @onClick="addDigit" />
-        <Button label="*" operation @onClick="setOperation" />
-        <Button label="4" @onClick="addDigit" />
-        <Button label="5" @onClick="addDigit" />
-        <Button label="6" @onClick="addDigit" />
-        <Button label="-" operation @onClick="setOperation" />
-        <Button label="1" @onClick="addDigit" />
-        <Button label="2" @onClick="addDigit" />
-        <Button label="3" @onClick="addDigit" />
-        <Button label="+" operation @onClick="setOperation" />
-        <Button label="0" double @onClick="addDigit" />
-        <Button label="." @onClick="addDigit" />
-        <Button label="=" operation @onClick="setOperation" />
+        <DisplayApp :value="displayValue" />
+        <ButtonApp label="AC" triple @onClick="clearMemory" />
+        <ButtonApp label="/" operation @onClick="setOperation" />
+        <ButtonApp label="7" @onClick="addDigit" />
+        <ButtonApp label="8" @onClick="addDigit" />
+        <ButtonApp label="9" @onClick="addDigit" />
+        <ButtonApp label="*" operation @onClick="setOperation" />
+        <ButtonApp label="4" @onClick="addDigit" />
+        <ButtonApp label="5" @onClick="addDigit" />
+        <ButtonApp label="6" @onClick="addDigit" />
+        <ButtonApp label="-" operation @onClick="setOperation" />
+        <ButtonApp label="1" @onClick="addDigit" />
+        <ButtonApp label="2" @onClick="addDigit" />
+        <ButtonApp label="3" @onClick="addDigit" />
+        <ButtonApp label="+" operation @onClick="setOperation" />
+        <ButtonApp label="0" double @onClick="addDigit" />
+        <ButtonApp label="." @onClick="addDigit" />
+        <ButtonApp label="=" operation @onClick="setOperation" />
     </div>
 </template>
 
 <script>
-import Button from "../components/Button"
-import Display from "../components/Display"
+import ButtonApp from "../components/Button"
+import DisplayApp from "../components/Display"
 
 export default {
+    name: 'CalcApp',
     data: function() {
         return {
             displayValue: "0",
@@ -35,7 +36,7 @@ export default {
             current: 0
         }
     },
-    components: { Button, Display },
+    components: { ButtonApp, DisplayApp },
     methods: {
         clearMemory() {
             Object.assign(this.$data, this.$options.data())

@@ -8,6 +8,7 @@
 
 <script>
 export default {
+    name: 'ButtonApp',
     props: {
         label: {},
         operation: { type: Boolean },
